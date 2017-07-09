@@ -101,7 +101,7 @@
 	  btnLogout.addEventListener("click" , function(){
 	  	auth.signOut();
 	  	toastr.success('Sesión Cerrada');
-	  	document.location.href = 'index.html';
+	  	document.location.href = 'CierreSesion.html';
 
 
 	  });
