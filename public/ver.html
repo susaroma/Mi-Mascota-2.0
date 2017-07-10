@@ -244,8 +244,8 @@
 
 
 
-      var ref = firebase.database().ref("usuario/"+uid);
-			ref.once("value").then(function(snapshot) {
+      var ref = firebase.database().ref("usuario");
+			ref.on("value").then(function(snapshot) {
 			var EsAdmin = snapshot.child("Admin").val();
 				if (EsAdmin)
 				{
@@ -304,23 +304,32 @@
 
       }
 
-      function Clasificar ()
-      {
+			function Clasificar (){
       	var referencia = firebase.database().ref("usuario/"+uid);
-		referencia.once("value").then(function(snapshot) {
-		var EsAdmin = snapshot.child("Admin").val();
-      	if (EsAdmin)
-      	{
-      		firebase.database().ref("usuario/"+uid).update({
-			Clasificado: true,
-			});
+				referencia.once("value").then(function(snapshot) {
+				var EsAdmin = snapshot.child("Admin").val();
+      		if (EsAdmin){
+      			firebase.database().ref("usuario/"+uid).update({
+							Clasificado: true,
+						});
+						var query = firebase.database().ref("usuario/"+uid);
+				query.once("value").then(function(snapshot)	{
+					var email= snapshot.child("correo").val();
+				$(location).attr('href', 'mailto:'+email+'?subject='
+																 + encodeURIComponent("Calificado!")
+																 + "&body="
+																 + encodeURIComponent("FELICITACIONES!!!! Fuiste calificado para el concurso mi mascota.")
+				);
+
+			}).catch(function(error) {
+						alert(error.code);
+					});
+
 			alert('Clasificado');
       	}
+
       	else {alert('No tienes privilegios para hacer eso');}
       });
-
-
-
       }
 
  function No ()

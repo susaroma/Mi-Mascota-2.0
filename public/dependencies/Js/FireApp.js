@@ -205,8 +205,9 @@
 	  		}).catch(function(error) {
         		alert(error.code);
         	});
-
-        	window.location = 'exitoso.html'; // Aqui puedo poner exitoso.html
+					alert('Registro exitoso!')
+        	window.location = 'ver.html?uid='+uid;
+					// Aqui puedo poner exitoso.html
 	  	});
 		};
 
