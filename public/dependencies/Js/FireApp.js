@@ -206,7 +206,7 @@
         		alert(error.code);
         	});
 
-        	window.location = 'ver.html?uid'+uid; // Aqui puedo poner exitoso.html
+        	window.location = 'exitoso.html'; // Aqui puedo poner exitoso.html
 	  	});
 		};
 
